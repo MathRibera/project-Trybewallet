@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchApi,
   getEdited, getExpenses, getTotal } from '../redux/actions';
 import Table from './Table';
+import styles from './css/WalletForm.module.css'
 
 class WalletForm extends Component {
   state = {
@@ -65,11 +66,12 @@ class WalletForm extends Component {
     const { wallet: { currencies, editor } } = this.props;
     const { method, tag, value, currency, description } = this.state;
     return (
-      <div>
-        <div style={ { display: 'flex' } }>
-          <div>
+      <div className={styles.background}>
+        <div className={styles.menu}>
+          <div className={styles.container}>
             <p>Descrição da Despesa:</p>
             <input
+              className={styles['inputs']}
               value={ description }
               onChange={ ({ target }) => this.setState({ description: target.value }) }
               type="text"
@@ -77,9 +79,10 @@ class WalletForm extends Component {
               placeholder="description"
             />
           </div>
-          <div>
+          <div className={styles.container}>
             <p>Valor da despesa:</p>
             <input
+              className={styles['inputs']}
               value={ value }
               onChange={ ({ target }) => this.setState({ value: target.value }) }
               type="text"
@@ -87,9 +90,10 @@ class WalletForm extends Component {
               placeholder="value"
             />
           </div>
-          <div>
+          <div className={styles.container}>
             <p>Moeda:</p>
             <select
+              className={styles.inputs}
               value={ currency }
               data-testid="currency-input"
               onChange={ ({ target }) => this.setState({ currency: target.value }) }
@@ -99,9 +103,10 @@ class WalletForm extends Component {
               ))}
             </select>
           </div>
-          <div>
-            <p>Método de pagamentos:</p>
+          <div className={styles.container}>
+            <p>Método de pagamentos</p>
             <select
+              className={styles.inputs}
               value={ method }
               data-testid="method-input"
               style={ { width: '97%' } }
@@ -112,9 +117,10 @@ class WalletForm extends Component {
               <option>Cartão de débito</option>
             </select>
           </div>
-          <div>
-            <p>Tipo de despesa:</p>
+          <div className={styles.container}>
+            <p>Tipo de despesa</p>
             <select
+              className={styles.inputs}
               value={ tag }
               data-testid="tag-input"
               style={ { width: '97%' } }
@@ -127,8 +133,9 @@ class WalletForm extends Component {
               <option>Saúde</option>
             </select>
           </div>
-          <div>
+          <div className={styles.containerButton}>
             <button
+              className={ styles.buttonSubmit}
               data-testid="buttonSubmit"
               onClick={ this.handleForms }
             >

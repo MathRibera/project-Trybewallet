@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getDelete, getEdit, getTotal } from '../redux/actions';
+import styles from './css/Table.module.css'
 
 class Table extends Component {
   render() {
@@ -33,7 +34,7 @@ class Table extends Component {
           const convertido = (parseFloat(value) * parseFloat(cambio));
           return (
             <tbody key={ id }>
-              <tr>
+              <tr className={styles.containerItens} >
                 <td>{description}</td>
                 <td>{tag}</td>
                 <td>{method}</td>

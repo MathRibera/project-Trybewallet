@@ -1,0 +1,14 @@
+.cabecalho{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(99, 100, 100, 0.75);
+  width: 60%;
+  margin: auto;
+  color: white;
+}
+.cabecalho > a{
+  margin: 0 0 0 20px;
+  color: white;
+  text-decoration: none;
+}

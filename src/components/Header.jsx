@@ -2,13 +2,16 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import styles from './css/Header.module.css'
 
 class Header extends Component {
   render() {
     const { user, wallet } = this.props;
     const { total } = wallet;
     return (
-      <div style={ { display: 'flex', justifyContent: 'space-between' } }>
+      <div
+      className={styles.cabecalho}
+      >
         <Link to="/">
           <h1>TrybeWallet</h1>
         </Link>
@@ -22,10 +25,7 @@ class Header extends Component {
         >
           <h3 data-testid="email-field">{user.email}</h3>
           <h3>
-            Despesas Totais:
-          </h3>
-          <h3 data-testid="total-field">
-            { total }
+            {`Despesas Totais: ${total}` }
           </h3>
           <h3 data-testid="header-currency-field"> BRL </h3>
         </div>
