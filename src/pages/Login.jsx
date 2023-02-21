@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUser } from '../redux/actions';
+import styles from './css/Login.module.css'
+
 
 class Login extends React.Component {
   state = {
@@ -15,32 +17,38 @@ class Login extends React.Component {
     const authPass = 6;
     const regexEmail = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
     return (
-      <div>
-        <input
-          type="email"
-          name="email"
-          data-testid="email-input"
-          value={ email }
-          onChange={ ({ target }) => this.setState({ email: target.value }) }
-        />
-        <input
-          type="password"
-          name="password"
-          data-testid="password-input"
-          placeholder="Password"
-          value={ password }
-          onChange={ ({ target }) => this.setState({ password: target.value }) }
-        />
-        <button
-          type="button"
-          disabled={ password.length < authPass || !regexEmail.test(email) }
-          onClick={ () => {
-            dispatch(getUser(email));
-            history.push('/carteira');
-          } }
-        >
-          Entrar
-        </button>
+      <div className={styles.background}>
+        <div className={styles.containerInput}>
+          <input
+            className={styles.emailInput}
+            type="email"
+            name="email"
+            placeholder='Email'
+            data-testid="email-input"
+            value={ email }
+            onChange={ ({ target }) => this.setState({ email: target.value }) }
+            />
+          <input
+            className={styles.passwordInput}
+            type="password"
+            name="password"
+            data-testid="password-input"
+            placeholder="Password"
+            value={ password }
+            onChange={ ({ target }) => this.setState({ password: target.value }) }
+            />
+          <button
+            className={styles.buttonSubmit}
+            type="button"
+            disabled={ password.length < authPass || !regexEmail.test(email) }
+            onClick={ () => {
+              dispatch(getUser(email));
+              history.push('/carteira');
+            } }
+            >
+            Entrar
+          </button>
+        </div>
       </div>
     );
   }
